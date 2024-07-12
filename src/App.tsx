@@ -1,18 +1,8 @@
 import "./App.scss";
-import CardCollection from "./components/CardCollection/CardCollection";
-import Header from "./components/Header/Header";
-import Modal from "./components/Modal/Modal";
-import ErrorBoundary from "./features/ErrorBoundary/ErrorBoundary";
+import Root from "./pages/Root/Root";
 
 function App() {
-  return (
-    <div className="main-layout">
-      <Header />
-      <ErrorBoundary fallback={<Modal />}>
-        <CardCollection />
-      </ErrorBoundary>
-    </div>
-  );
+  return <Root />;
 }
 
 export default App;
