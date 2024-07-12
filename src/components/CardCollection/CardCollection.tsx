@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
 import "./CardCollection.scss";
 import Card from "../Card/Card";
-import {  Character } from "../../assets/types";
+import { Character } from "../../assets/types";
 import Loader from "../../../public/icons8-rick-and-morty.svg";
 
 const CardCollection = () => {
   const [characters, setCharacters] = useState([]);
-  const [inputValue, setInputValue] = useState("")
-  const [searchTerm , setSearchTerm] = useState("");
+  const [inputValue, setInputValue] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
   const [isError, setIsError] = useState(false);
 
   const showLoader = <div>{Loader}</div>;
 
   useEffect(() => {
     if (isError) {
-      throw new Error("Test for ErrorBoundary")
+      throw new Error("Test for ErrorBoundary");
     }
     fetchData();
   }, [searchTerm, isError]);
@@ -42,7 +42,7 @@ const CardCollection = () => {
           console.error(err);
         });
     }
-  }
+  };
 
   const showError = () => {
     setIsError(true);
@@ -67,7 +67,7 @@ const CardCollection = () => {
               className="btn"
               onClick={(e) => {
                 e.preventDefault();
-                setSearchTerm(inputValue)
+                setSearchTerm(inputValue);
                 localStorage.setItem("searchTerm", inputValue);
                 fetchData();
               }}
