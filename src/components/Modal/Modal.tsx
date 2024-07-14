@@ -10,7 +10,7 @@ export default class Modal extends Component {
   render() {
     return (
       <div>
-        <h1 className="heading">{MESSAGES}</h1>
+        <h1 className="modal-heading">{MESSAGES}</h1>
         <button className="refresh" onClick={this.refreshWindow}>
           To return, click on this button
         </button>

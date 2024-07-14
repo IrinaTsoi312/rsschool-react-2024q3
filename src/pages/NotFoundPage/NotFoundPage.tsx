@@ -7,11 +7,14 @@ export default function NotFoundPage() {
 
   return (
     <div className="not-found">
-      <h1>404 Not Found</h1>
+      <h1 className="heading">404 Not Found</h1>
       <p className="message">{rickPhrases[random]}</p>
       <div className="link-btn">
-        <Link className="link" to="/">Ok Ok, click here to go back!</Link>
+        <Link className="link" to="/">
+          <span>Ok Ok, click here to go back!</span>
+        </Link>
+        <span className="img"></span>
       </div>
     </div>
-  )
+  );
 }

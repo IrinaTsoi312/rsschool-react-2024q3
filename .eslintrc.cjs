@@ -15,6 +15,7 @@ module.exports = {
       { allowConstantExport: true },
     ],
     "react-compiler/react-compiler": "error",
+    "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/no-explicit-any": "error",
   },
 };

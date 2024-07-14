@@ -1,10 +1,24 @@
 import { ReactNode, RefObject } from "react";
 
+export interface SearchContextInitialValue {
+  term: string,
+  setTerm: React.Dispatch<React.SetStateAction<string>>
+}
+
+export interface DataContextInitialValue {
+  data: CharactersFetchedData | undefined,
+  setData: React.Dispatch<React.SetStateAction<CharactersFetchedData | undefined>>
+}
+
+export interface ContextProps {
+  children: ReactNode
+}
+
 export type CharactersFetchedData = {
   info: {
     count: number;
     pages: number;
-    next: string;
+    next: string | null;
     prev: null | string;
   };
   results: Character[];

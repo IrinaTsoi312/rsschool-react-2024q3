@@ -8,5 +8,5 @@ export const rickPhrases: string[] = [
   "404: Page not found. But hey, at least you're not Cronenberg'd!",
   "Looks like the Citadel of Ricks needs a better web developer. Get it together, guys!",
   "You know, sometimes even the smartest guy in the multiverse can't fix a broken link.",
-  "404? Meh, it's just a glitch in the simulation. Grab a portal gun and let's find a way out!"
+  "404? Meh, it's just a glitch in the simulation. Grab a portal gun and let's find a way out!",
 ];

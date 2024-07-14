@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import "./CardCollection.scss";
 import Card from "../Card/Card";
-import { Character } from "../../assets/types";
+import { Character, CharactersFetchedData } from "../../assets/types";
 import Loader from "../../../public/icons8-rick-and-morty.svg";
+import { useSearchContext } from "../../features/providers/SearchContextProvider/SearchContext";
+import { useDataContext } from "../../features/providers/DataContextProvider/DataContext";
 
 const CardCollection = () => {
-  const [characters, setCharacters] = useState([]);
-  const [inputValue, setInputValue] = useState("");
-  const [searchTerm, setSearchTerm] = useState("");
+  const {term} = useSearchContext();
+  const {data, setData} = useDataContext();
   const [isError, setIsError] = useState(false);
 
   const showLoader = <div>{Loader}</div>;
@@ -16,33 +17,15 @@ const CardCollection = () => {
     if (isError) {
       throw new Error("Test for ErrorBoundary");
     }
-    fetchData();
-  }, [searchTerm, isError]);
-
-  const fetchData = () => {
-    const term = localStorage.getItem("searchTerm");
-    if (!term) {
-      fetch("https://rickandmortyapi.com/api/character")
-        .then((response) => response.json())
-        .then((data) => {
-          setCharacters(data.results);
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    }
-    if (term) {
-      setSearchTerm(term);
-      fetch(`https://rickandmortyapi.com/api/character/?name=${term}`)
-        .then((response) => response.json())
-        .then((data) => {
-          setCharacters(data.results);
-        })
-        .catch((err) => {
-          console.error(err);
-        });
-    }
-  };
+    fetch("https://rickandmortyapi.com/api/character")
+      .then((response) => response.json())
+      .then((data: CharactersFetchedData) => {
+        setData(data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, [term, isError]);
 
   const showError = () => {
     setIsError(true);
@@ -50,39 +33,14 @@ const CardCollection = () => {
 
   return (
     <main className="main">
-      <section className="search">
-        <div className="search-panel">
-          <form className="search-form">
-            <input
-              type="text"
-              className="search-input"
-              name="search"
-              aria-roledescription="search input"
-              defaultValue={searchTerm}
-              onChange={(e) => setInputValue(e.target.value)}
-            />
-            <button
-              id="searchBtn"
-              type="button"
-              className="btn"
-              onClick={(e) => {
-                e.preventDefault();
-                setSearchTerm(inputValue);
-                localStorage.setItem("searchTerm", inputValue);
-                fetchData();
-              }}
-            ></button>
-          </form>
-        </div>
-        <button className="error-btn" onClick={showError}>
-          Error
-        </button>
-      </section>
+      <button className="error-btn" onClick={showError}>
+        Error
+      </button>
       <h2 className="message">Find your favorite character!</h2>
       {showLoader && (
         <section className="card-collection">
           <div className="collection">
-            {characters!.map((item: Character) => (
+            {data!.results!.map((item: Character) => (
               <Card
                 key={item.id}
                 imgUrl={item.image}
