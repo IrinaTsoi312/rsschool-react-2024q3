@@ -7,8 +7,10 @@ import { useSearchContext } from "../../features/providers/SearchContextProvider
 import { useDataContext } from "../../features/providers/DataContextProvider/DataContext";
 
 const CardCollection = () => {
-  const {term} = useSearchContext();
-  const {data, setData} = useDataContext();
+  const { term } = useSearchContext();
+  const [fetchedData, setFetchedData] = useState<CharactersFetchedData | null>(
+    null,
+  );
   const [isError, setIsError] = useState(false);
 
   const showLoader = <div>{Loader}</div>;
@@ -20,7 +22,7 @@ const CardCollection = () => {
     fetch("https://rickandmortyapi.com/api/character")
       .then((response) => response.json())
       .then((data: CharactersFetchedData) => {
-        setData(data);
+        setFetchedData(data);
       })
       .catch((err) => {
         console.error(err);
@@ -40,7 +42,7 @@ const CardCollection = () => {
       {showLoader && (
         <section className="card-collection">
           <div className="collection">
-            {data!.results!.map((item: Character) => (
+            {fetchedData!.results!.map((item: Character) => (
               <Card
                 key={item.id}
                 imgUrl={item.image}

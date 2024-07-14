@@ -1,17 +1,19 @@
 import { ReactNode, RefObject } from "react";
 
 export interface SearchContextInitialValue {
-  term: string,
-  setTerm: React.Dispatch<React.SetStateAction<string>>
+  term: string;
+  setTerm: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export interface DataContextInitialValue {
-  data: CharactersFetchedData | undefined,
-  setData: React.Dispatch<React.SetStateAction<CharactersFetchedData | undefined>>
+  data: CharactersFetchedData | undefined;
+  setData: React.Dispatch<
+    React.SetStateAction<CharactersFetchedData | undefined>
+  >;
 }
 
 export interface ContextProps {
-  children: ReactNode
+  children: ReactNode;
 }
 
 export type CharactersFetchedData = {

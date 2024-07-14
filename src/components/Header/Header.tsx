@@ -3,9 +3,9 @@ import { useSearchContext } from "../../features/providers/SearchContextProvider
 import "./Header.scss";
 
 const Header = () => {
-  const {term, setTerm} = useSearchContext();
+  const { term, setTerm } = useSearchContext();
   const [inputValue, setInputValue] = useState(term);
-  console.log(term)
+  console.log(term);
 
   const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
@@ -34,7 +34,8 @@ const Header = () => {
               id="searchBtn"
               type="button"
               className="btn"
-              onClick={submitSearchTerm}></button>
+              onClick={submitSearchTerm}
+            ></button>
           </form>
         </div>
       </div>

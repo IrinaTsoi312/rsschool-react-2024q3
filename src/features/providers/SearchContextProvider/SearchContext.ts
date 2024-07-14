@@ -3,10 +3,11 @@ import { SearchContextInitialValue } from "../../../assets/types";
 
 const initialValue = {
   term: "",
-  setTerm: () => {}
+  setTerm: () => {},
 };
 
-export const SearchContext= createContext<SearchContextInitialValue>(initialValue);
+export const SearchContext =
+  createContext<SearchContextInitialValue>(initialValue);
 
 export const useSearchContext = () => {
   const context = useContext(SearchContext);
@@ -15,4 +16,4 @@ export const useSearchContext = () => {
     console.error("Ther is no Search context!");
   }
   return context;
-}
+};

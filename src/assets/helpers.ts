@@ -4,7 +4,7 @@ import { useDataContext } from "../features/providers/DataContextProvider/DataCo
 
 export const useFetchData = () => {
   const { term } = useSearchContext();
-  const {data, setData} = useDataContext();
+  const { data, setData } = useDataContext();
   if (!term) {
     fetch("https://rickandmortyapi.com/api/character")
       .then((response) => response.json())
@@ -16,11 +16,11 @@ export const useFetchData = () => {
         console.error(err);
       });
   }
-}
+};
 
 export async function useFetchDataHook() {
   const { term } = useSearchContext();
-  const {data, setData} = useDataContext();
+  const { data, setData } = useDataContext();
   localStorage.setItem("searchTerm", term);
   fetch(`https://rickandmortyapi.com/api/character/?name=${term}`)
     .then((response) => response.json())

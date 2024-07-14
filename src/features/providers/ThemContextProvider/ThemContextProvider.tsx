@@ -1,8 +1,5 @@
-
 function ThemContextProvider() {
-  return (
-    <div>ThemContextProvider</div>
-  )
+  return <div>ThemContextProvider</div>;
 }
 
-export default ThemContextProvider
+export default ThemContextProvider;

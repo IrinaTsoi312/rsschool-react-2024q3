@@ -4,14 +4,14 @@ import { DataContextInitialValue } from "../../../assets/types";
 const InitialValue = {
   data: {
     info: {
-    count: 0,
-    pages: 0,
-    next: "",
-    prev: null
+      count: 0,
+      pages: 0,
+      next: "",
+      prev: null,
+    },
+    results: [],
   },
-  results: [],
-  },
-  setData: () => {}
+  setData: () => {},
 };
 
 export const DataContext = createContext<DataContextInitialValue>(InitialValue);
@@ -23,4 +23,4 @@ export const useDataContext = () => {
     console.error("Ther is nod Data context!");
   }
   return context;
-}
+};
