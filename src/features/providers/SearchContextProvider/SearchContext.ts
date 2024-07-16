@@ -13,7 +13,7 @@ export const useSearchContext = () => {
   const context = useContext(SearchContext);
 
   if (!context) {
-    console.error("Ther is no Search context!");
+    console.error("There is no Search context!");
   }
   return context;
 };

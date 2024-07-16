@@ -6,10 +6,12 @@ export interface SearchContextInitialValue {
 }
 
 export interface DataContextInitialValue {
-  data: CharactersFetchedData | undefined;
+  data: CharactersFetchedData | undefined,
   setData: React.Dispatch<
     React.SetStateAction<CharactersFetchedData | undefined>
-  >;
+  >,
+  showDetails: boolean,
+  setShowDetails: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export interface ContextProps {
@@ -57,9 +59,10 @@ export type CardCollectionState = {
 };
 
 export type CardProps = {
-  name: string;
-  imgUrl: string;
-  species: string;
+  name: string,
+  imgUrl: string,
+  species: string,
+  id: number
 };
 
 export type SearchPanelState = {
@@ -78,3 +81,17 @@ export type ErrorBoundaryProps = {
 export type HeaderProps = {
   hasError: boolean;
 };
+
+export type PaginationProps = {
+  num: number,
+  link: string,
+  setCurrentPageNum: (num: number) => void
+}
+
+export type CollectionProps = {
+  fetchedData: CharactersFetchedData,
+}
+
+export type CardDetailsProps = {
+  fetchedData: CharactersFetchedData
+}

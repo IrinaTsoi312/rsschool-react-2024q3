@@ -12,6 +12,8 @@ const InitialValue = {
     results: [],
   },
   setData: () => {},
+  showDetails: false,
+  setShowDetails: () => {}
 };
 
 export const DataContext = createContext<DataContextInitialValue>(InitialValue);

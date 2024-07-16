@@ -10,7 +10,6 @@ export const useFetchData = () => {
       .then((response) => response.json())
       .then((data: CharactersFetchedData) => {
         setData(data);
-        console.log(data);
       })
       .catch((err) => {
         console.error(err);
@@ -24,8 +23,8 @@ export async function useFetchDataHook() {
   localStorage.setItem("searchTerm", term);
   fetch(`https://rickandmortyapi.com/api/character/?name=${term}`)
     .then((response) => response.json())
-    .then((data) => {
-      setData(data);
+    .then((result) => {
+      setData(result);
     })
     .catch((err) => {
       console.error(err);
