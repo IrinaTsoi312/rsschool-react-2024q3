@@ -93,7 +93,7 @@ const CardCollection = () => {
           </div>
           <div className="collection-content">
             <Collection fetchedData={fetchedData} />
-            {showDetails ? (<CardDetails fetchedData={fetchedData} />) : null}
+            {showDetails ? (<CardDetails fetchedData={fetchedData.results} />) : null}
           </div>
         </>
       )}

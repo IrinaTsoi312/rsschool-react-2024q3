@@ -5,8 +5,7 @@ import { PaginationProps } from "../../assets/types";
 export default function Pagination (props: PaginationProps) {
   const {num, link, setCurrentPageNum} = props;
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
-    e.preventDefault();
+  const handleClick = () => {
     setCurrentPageNum(num);
   }
   return (

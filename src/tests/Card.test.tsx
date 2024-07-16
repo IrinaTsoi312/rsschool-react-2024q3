@@ -2,16 +2,11 @@ import { afterAll, describe, expect, it, vi } from "vitest";
 import Card from "../components/Card/Card";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-
-const mockProps = {
-  id: 1,
-  name: "Rick Sanchez",
-  imgUrl: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-  species: "Human"
-}
+import CardDetails from "../components/CardDetails/CardDetails";
+import { FETCHED_DATA, mockProps } from "./test.constants";
 
 describe("Card", () => {
-  it("find if card has an image", () => {
+  it("find if card has relevant image", () => {
     render(
       <BrowserRouter>
         <Card {...mockProps} />
@@ -26,7 +21,7 @@ describe("Card", () => {
 
 
 describe("Card", () => {
-  it("find if card has an characters name", () => {
+  it("find if card has an characters relevant name", () => {
     render(
       <BrowserRouter>
         <Card {...mockProps} />
@@ -40,10 +35,25 @@ describe("Card", () => {
 });
 
 describe("Card", () => {
-  it("find if card has an characters species", () => {
+  it("find if card has an characters relevant species", () => {
     render(
       <BrowserRouter>
         <Card {...mockProps} />
+      </BrowserRouter>
+    );
+
+    const name = screen.getByText("Human");
+    
+    expect(name).toBeInTheDocument();
+  })
+});
+
+describe("Card", () => {
+  it("find if card has an characters relevant species", () => {
+    render(
+      <BrowserRouter>
+        <Card {...mockProps} />
+        <CardDetails fetchedData={FETCHED_DATA.results} />
       </BrowserRouter>
     );
 

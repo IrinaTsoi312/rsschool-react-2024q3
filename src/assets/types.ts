@@ -93,5 +93,5 @@ export type CollectionProps = {
 }
 
 export type CardDetailsProps = {
-  fetchedData: CharactersFetchedData
+  fetchedData: Character[]
 }

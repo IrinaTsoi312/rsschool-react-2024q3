@@ -6,39 +6,37 @@ import "./CardDetails.scss";
 export default function CardDetails(props: CardDetailsProps) {
   const { fetchedData } = props;
   const { setShowDetails } = useDataContext();
-  const data = fetchedData.results;
   
   const { id } = useParams();
   
   const closeCard = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
     e.preventDefault();
     setShowDetails(false);
-    console.log("Open");
   };
   return (
-    <section>
-      {data.map((item) => {
+    <section data-testid="card-details-section">
+      {fetchedData.map((item) => {
         if (item.id === Number(id)!) {
           return (
             <div key={id} className="details-container">
-              <h5>Character Details:</h5>
-              <div className="details-card">
-                <img src={item.image} alt={item.name} className="details-img" />
+              <h5 data-testid="d-title">Character Details:</h5>
+              <div className="details-card" data-testid="d-card">
+                <img src={item.image} alt={item.name} className="details-img" data-testid="d-image" />
                 <div className="details-text">
-                  <h3 className="details-name">{item.name}</h3>
+                  <h3 className="details-name" data-testid="d-name">{item.name}</h3>
                   <table className="details-table">
                     <tbody>
                       <tr className="details-row">
                         <td className="details-title">Status:</td>
-                        <td className="details-value">{item.status}</td>
+                        <td className="details-value" data-testid="d-status">{item.status}</td>
                       </tr>
                       <tr className="details-row">
                         <td className="details-title">Origin:</td>
-                        <td className="details-value">{item.origin.name}</td>
+                        <td className="details-value" data-testid="d-origin">{item.origin.name}</td>
                       </tr>
                       <tr className="details-row">
                         <td className="details-title">Location:</td>
-                        <td className="details-value">{item.location.name}</td>
+                        <td className="details-value" data-testid="d-location">{item.location.name}</td>
                       </tr>
                     </tbody>
                   </table>
