@@ -1,4 +1,8 @@
 {
+  "compilerOptions": {
+    "types": ["vitest/globals"],
+  },
+  "includes": ["./src/tests/setup.ts"],
   "files": [],
   "references": [
     {
