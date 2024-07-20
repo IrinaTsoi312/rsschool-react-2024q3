@@ -16,7 +16,8 @@ export default function CardDetails(props: CardDetailsProps) {
   return (
     <section data-testid="card-details-section">
       {fetchedData.map((item) => {
-        if (item.id === Number(id)!) {
+        console.log(item.id);
+        if (item.id === Number(id)) {
           return (
             <div key={id} className="details-container">
               <h5 data-testid="d-title">Character Details:</h5>

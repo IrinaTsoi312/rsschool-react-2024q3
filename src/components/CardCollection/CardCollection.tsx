@@ -7,6 +7,7 @@ import Collection from "../Collection/Collection";
 import CardDetails from "../CardDetails/CardDetails";
 import { useDataContext } from "../../features/providers/DataContextProvider/DataContext";
 import { paginations } from "../Pagination/Pagination.helpers";
+import { Outlet } from "react-router-dom";
 
 const initialFetchedValue = {
   info: {
@@ -20,7 +21,7 @@ const initialFetchedValue = {
 
 const CardCollection = () => {
   const { term, setTerm } = useSearchContext();
-  const {showDetails, setShowDetails} = useDataContext();
+  // const {showDetails, setShowDetails} = useDataContext();
 
   const [fetchedData, setFetchedData] = useState<CharactersFetchedData>(initialFetchedValue);
   const [isLoading, setIsLoading] = useState(true);
@@ -93,7 +94,11 @@ const CardCollection = () => {
           </div>
           <div className="collection-content">
             <Collection fetchedData={fetchedData} />
-            {showDetails ? (<CardDetails fetchedData={fetchedData.results} />) : null}
+            <div>
+              <Outlet />
+            </div>
+            {/* <Collection fetchedData={fetchedData} />
+            {showDetails ? (<CardDetails fetchedData={fetchedData.results} />) : null} */}
           </div>
         </>
       )}
