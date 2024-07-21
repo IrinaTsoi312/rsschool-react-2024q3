@@ -11,7 +11,9 @@ export interface DataContextInitialValue {
     React.SetStateAction<CharactersFetchedData | undefined>
   >,
   showDetails: boolean,
-  setShowDetails: React.Dispatch<React.SetStateAction<boolean>>
+  setShowDetails: React.Dispatch<React.SetStateAction<boolean>>,
+  currentPage: number,
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>
 }
 
 export interface ContextProps {

@@ -7,6 +7,7 @@ import Collection from "../Collection/Collection";
 import CardDetails from "../CardDetails/CardDetails";
 import { useDataContext } from "../../features/providers/DataContextProvider/DataContext";
 import { paginations } from "../Pagination/Pagination.helpers";
+import { characterAPI } from "../../features/redux/api/ApiSlice";
 
 const initialFetchedValue = {
   info: {
@@ -26,7 +27,10 @@ const CardCollection = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [total, setTotal] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1);
+  const {currentPage, setCurrentPage} = useDataContext();
+
+  const {data} = characterAPI.useFetchCharactersQuery("");
+  console.log(data);
 
   const showLoader = <div>Loading...</div>;
 

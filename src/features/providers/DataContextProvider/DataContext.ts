@@ -13,7 +13,9 @@ const InitialValue = {
   },
   setData: () => {},
   showDetails: false,
-  setShowDetails: () => {}
+  setShowDetails: () => {},
+  currentPage: 1,
+  setCurrentPage: () => {}
 };
 
 export const DataContext = createContext<DataContextInitialValue>(InitialValue);
