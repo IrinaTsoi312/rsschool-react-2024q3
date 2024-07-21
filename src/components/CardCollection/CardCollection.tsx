@@ -20,7 +20,7 @@ const initialFetchedValue = {
 
 const CardCollection = () => {
   const { term, setTerm } = useSearchContext();
-  const {showDetails, setShowDetails} = useDataContext();
+  const {showDetails} = useDataContext();
 
   const [fetchedData, setFetchedData] = useState<CharactersFetchedData>(initialFetchedValue);
   const [isLoading, setIsLoading] = useState(true);

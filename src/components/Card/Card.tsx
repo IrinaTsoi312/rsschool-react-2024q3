@@ -17,7 +17,7 @@ const Card = (props: CardProps) => {
     setShowDetails(true);
   };
 
-  const getSelectedCard = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const switchSelectCard = (e: React.ChangeEvent<HTMLInputElement>) => {
     const target = e.target as HTMLInputElement;
     if (target.checked) {
       dispatch(selectCard(target.id));
@@ -33,7 +33,7 @@ const Card = (props: CardProps) => {
       name={(id.toString())}
       className="cardSelect" 
       id={id.toString()}
-      onChange={getSelectedCard}
+      onChange={switchSelectCard}
     />
     <NavLink
       to={`/card-collection/details/${id}`}

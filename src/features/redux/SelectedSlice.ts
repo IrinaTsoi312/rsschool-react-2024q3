@@ -13,9 +13,8 @@ export const selectedCardsSlice = createSlice({
       state.selectedCardsData.push(action.payload);
     },
     unSelectCard: (state, action) => {
-      console.log(state.selectedCardsData)
-      state.selectedCardsData.filter((card) => {
-        card !== action.payload;
+      state.selectedCardsData = state.selectedCardsData.filter((card) => {
+        return card !== action.payload;
       });
     },
   }
