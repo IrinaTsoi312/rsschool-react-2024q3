@@ -2,19 +2,42 @@ import "./Card.scss";
 import { CardProps } from "../../assets/types";
 import { NavLink } from "react-router-dom";
 import { useDataContext } from "../../features/providers/DataContextProvider/DataContext";
+import { useDispatch } from "react-redux";
+import { selectCard, unSelectCard } from "../../features/redux/SelectedSlice";
 
 const Card = (props: CardProps) => {
   const { id, name, imgUrl, species } = props;
   const {setShowDetails} = useDataContext();
+  const dispatch = useDispatch();
 
-  const openCard = (): void => {
+  const openCard = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>): void => {
+    if ((e.target as HTMLElement).tagName.toLocaleLowerCase() === "input") {
+      return;
+    }
     setShowDetails(true);
   };
 
+  const getSelectedCard = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const target = e.target as HTMLInputElement;
+    if (target.checked) {
+      dispatch(selectCard(target.id));
+    } else if (!target.checked) {
+      dispatch(unSelectCard(target.id));
+    }
+  };
+
   return (
-    <NavLink 
-      to={`/card-collection/details/${id}`} 
-      className="card" 
+    <div className="card-container">
+    <input 
+      type="checkbox" 
+      name={(id.toString())}
+      className="cardSelect" 
+      id={id.toString()}
+      onChange={getSelectedCard}
+    />
+    <NavLink
+      to={`/card-collection/details/${id}`}
+      className="card"
       onClick={openCard}
       data-testid="card"
     >
@@ -23,8 +46,7 @@ const Card = (props: CardProps) => {
           src={imgUrl}
           alt="character Image"
           className="card-img"
-          width="200px"
-        />
+          width="200px" />
       </div>
       <div className="character-description">
         <h3 className="character-name" data-testid="charName">{name}</h3>
@@ -37,7 +59,7 @@ const Card = (props: CardProps) => {
           </tbody>
         </table>
       </div>
-    </NavLink>
+    </NavLink></div>
   );
 };
 

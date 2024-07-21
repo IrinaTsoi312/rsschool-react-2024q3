@@ -4,13 +4,8 @@
   border: 2px #0eb4d5 solid;
   border-radius: 5px;
   width: 25px;
-  height: 20px;
+  height: 25px;
   transition: all linear 0s;
-
-  &:hover {
-    color: #eeff00;
-    border: 1px #eeff00 solid;
-  }
 
   &:active {
     transform: scale(0.9);

@@ -3,23 +3,36 @@
 $font-main: "Great Vibes", cursive;
 $clr-title: #09ff00;
 $clr-subtitle: #00dbfc;
-$shadow-box: 10px 10px 10px 0px rgba(23, 22, 22, 0.75);
+$shadow-box: 10px 10px 10px 0px #171616bf;
+
+.card-container {
+  position: relative;
+  padding: 5px;
+  width: 260px;
+  height: 360px;
+  border-radius: 10px;
+  border: 1px solid #000000;
+  background-color: #013448;
+  box-shadow: $shadow-box;
+  cursor: pointer;
+
+  &:hover {
+    border: 2px solid #d4d4d4;
+    transition: all linear 0.2s;
+  }
+}
 
 .card {
   padding: 10px 20px;
   width: 260px;
   height: 315px;
-  border-radius: 10px;
-  border: 0.5px solid #4c4c4c;
-  background-color: #1a1a1a;
-  box-shadow: $shadow-box;
   text-decoration: none;
-  cursor: pointer;
+}
 
-  &:hover {
-    transform: scale(0.95);
-    transition: all linear 0.2s;
-  }
+.cardSelect {
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
 
 .card-img {
