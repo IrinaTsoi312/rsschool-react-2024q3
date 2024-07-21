@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { SelectedData } from "./redux.types";
+import { RootStateType } from "./redux.types";
 
-const initialState: SelectedData = {
+const initialState: RootStateType["selectedCardsSliceReducer"] = {
   selectedCardsData: [],
 };
 
@@ -13,8 +13,8 @@ export const selectedCardsSlice = createSlice({
       state.selectedCardsData.push(action.payload);
     },
     unSelectCard: (state, action) => {
-      state.selectedCardsData = state.selectedCardsData.filter((card) => {
-        return card !== action.payload;
+      state.selectedCardsData = state.selectedCardsData.filter((cardId: string) => {
+        return cardId !== action.payload;
       });
     },
   }

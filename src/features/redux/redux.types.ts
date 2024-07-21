@@ -1,3 +1,5 @@
-export type SelectedData = {
-  selectedCardsData: string[]
-}
+export type RootStateType = {
+  selectedCardsSliceReducer: {
+      selectedCardsData: string[];
+  };
+};

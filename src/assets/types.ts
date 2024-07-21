@@ -62,7 +62,8 @@ export type CardProps = {
   name: string,
   imgUrl: string,
   species: string,
-  id: number
+  id: number,
+  checked: boolean
 };
 
 export type SearchPanelState = {
