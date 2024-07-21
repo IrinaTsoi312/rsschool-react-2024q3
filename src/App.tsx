@@ -8,7 +8,7 @@ import SearchContextProvider from "./features/providers/SearchContextProvider/Se
 import { useThemeContext } from "./features/providers/ThemContextProvider/ThemeContext";
 
 function App() {
-  const BG_COLOR = { light: "#fff", dark: "#1e353e" };
+  const BG_COLOR = { light: "#fdfff0", dark: "#1e353e" };
 
   const {theme, setTheme} = useThemeContext();
 

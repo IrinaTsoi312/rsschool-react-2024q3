@@ -3,6 +3,7 @@ import { Character, CollectionProps } from "../../assets/types";
 import Card from "../Card/Card";
 import "./Collection.scss";
 import { RootStateType } from "../../features/redux/redux.types";
+import Flyout from "../Flyout/Flyout";
 
 export default function Collection(props: CollectionProps) {
   const {fetchedData} = props;
@@ -28,6 +29,7 @@ export default function Collection(props: CollectionProps) {
             checked={isChecked(item.id.toString())}
           />
         )))}
+        {selectedCardsData.length !== 0 ? <Flyout /> : null}
       </div>
     </section>
   )
