@@ -29,7 +29,7 @@ const CardCollection = () => {
   const [total, setTotal] = useState(0);
   const {currentPage, setCurrentPage} = useDataContext();
 
-  const {data} = characterAPI.useFetchCharactersQuery("");
+  const {data} = characterAPI.useFetchCharactersQuery(currentPage);
   console.log(data);
 
   const showLoader = <div>Loading...</div>;
