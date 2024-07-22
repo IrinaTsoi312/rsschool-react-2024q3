@@ -14,7 +14,7 @@ export const selectedCardsSlice = createSlice({
       state.currentCard = action.payload;
     },
     selectCard: (state, action) => {
-      state.selectedCardsData.push(action.payload);
+      state.selectedCardsData = [...state.selectedCardsData, action.payload];
     },
     unSelectCard: (state, action) => {
       state.selectedCardsData = state.selectedCardsData.filter((cardId: string) => {
