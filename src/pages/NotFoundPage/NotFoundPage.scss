@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+
+.not-found {
+  position: relative;
+}
+
+.heading {
+  position: relative;
+  margin: 0 auto;
+  font-family: "Creepster";
+  width: 300px;
+  color: #4ccf00;
+  font-size: 3em;
+}
+
+.img {
+  display: block;
+  width: 50px;
+  height: 20px;
+  transform: rotate(25deg);
+  background-image: url("../../../public/pngaaa.com-1232232.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.message {
+  padding: 2em 1em;
+  font-size: 1.5em;
+  color: rgb(0, 199, 222);
+}
+.link-btn {
+  margin: 0 auto;
+  padding: 0.3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 295px;
+  background-color: #4ccf00;
+  border-radius: 10px;
+  transition: all 0.2s linear;
+  cursor: pointer;
+
+  &:active {
+    transform: scale(0.9);
+  }
+}
+.link {
+  color: #000;
+  text-decoration: none;
+}

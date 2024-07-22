@@ -1,20 +1,53 @@
-import { Component } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
+import { useSearchContext } from "../../features/providers/SearchContextProvider/SearchContext";
 import "./Header.scss";
-import { HeaderProps } from "../../assets/types";
 
-export default class Header extends Component<object, HeaderProps> {
-  constructor(props: HeaderProps) {
-    super(props);
-    this.state = {
-      hasError: false,
-    };
-  }
+const Header = () => {
+  const { term, setTerm } = useSearchContext();
+  const [inputValue, setInputValue] = useState("");
+  const [localStorageValue, setLocalStorageValue] = useState(localStorage.getItem("searchTerm"));
 
-  render() {
-    return (
-      <header className="header">
-        <h1 className="logo">Rick and Morty</h1>
-      </header>
-    );
-  }
-}
+  useEffect(() => {
+    localStorage.setItem("searchTerm", term);
+  }, [term]);
+
+  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
+  };
+
+  const submitSearchTerm = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setTerm(inputValue);
+    localStorage.setItem("searchTerm", term);
+  };
+
+  return (
+    <header className="header">
+      <h1 className="logo">Rick and Morty</h1>
+      <div className="search">
+        <div className="search-panel">
+          <div className="search-form">
+            <input
+              type="text"
+              className="search-input"
+              name="search"
+              aria-roledescription="search input"
+              placeholder={
+                localStorageValue === null ? "" : localStorageValue
+              }
+              onChange={handleOnChange}
+            />
+            <button
+              id="searchBtn"
+              type="button"
+              className="btn"
+              onClick={submitSearchTerm}
+            ></button>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+};
+
+export default Header;

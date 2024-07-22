@@ -1,115 +1,104 @@
-import { Component, createRef } from "react";
+import { useEffect, useState } from "react";
 import "./CardCollection.scss";
-import Card from "../Card/Card";
-import { CardCollectionState, Character } from "../../assets/types";
+import { CharactersFetchedData } from "../../assets/types";
+import { useSearchContext } from "../../features/providers/SearchContextProvider/SearchContext";
+import { BASE_URL } from "./CardCollection.constants";
+import Collection from "../Collection/Collection";
+import CardDetails from "../CardDetails/CardDetails";
+import { useDataContext } from "../../features/providers/DataContextProvider/DataContext";
+import { paginations } from "../Pagination/Pagination.helpers";
 
-export default class CardCollection extends Component<
-  object,
-  CardCollectionState
-> {
-  constructor(props: object) {
-    super(props);
-    this.state = {
-      characters: [],
-      searchTerm: "",
-      loading: "Loading...",
-      message: "Find your favorite character!",
-      showError: false,
-      inputRef: createRef(),
-    };
-  }
+const initialFetchedValue = {
+  info: {
+    count: 0,
+    pages: 0,
+    next: "",
+    prev: null
+  },
+  results: []
+};
 
-  fetchData() {
-    const term = localStorage.getItem("searchTerm");
-    if (!term) {
-      fetch("https://rickandmortyapi.com/api/character")
-        .then((response) => response.json())
-        .then((data) => {
-          this.setState({ characters: data.results });
-        })
-        .catch((err) => {
-          console.error(err);
-          this.setState({ loading: "" });
-        });
+const CardCollection = () => {
+  const { term, setTerm } = useSearchContext();
+  const {showDetails, setShowDetails} = useDataContext();
+
+  const [fetchedData, setFetchedData] = useState<CharactersFetchedData>(initialFetchedValue);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+  const [total, setTotal] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const showLoader = <div>Loading...</div>;
+
+  useEffect(() => {
+    if (isError) {
+      throw new Error("Test for ErrorBoundary");
     }
-    if (term) {
-      this.setState({ searchTerm: term });
-      fetch(`https://rickandmortyapi.com/api/character/?name=${term}`)
-        .then((response) => response.json())
-        .then((data) => {
-          this.setState({ characters: data.results });
-        })
-        .catch((err) => {
-          console.error(err);
-          this.setState({ loading: "" });
-        });
-    }
-  }
+  }, [isError])
 
-  componentDidMount(): void {
-    this.fetchData();
-  }
+  useEffect(() => {})
 
-  showError = () => {
-    this.setState({ showError: true });
+  const showError = () => {
+    setIsError(true);
   };
 
-  render() {
-    const { characters, searchTerm, loading, message, showError, inputRef } =
-      this.state;
+  const fetchData = (url: string) => {
+    fetch(url)
+      .then((response) => response.json())
+      .then((data: CharactersFetchedData) => {
+        setIsLoading(false);
+        setFetchedData(data);
+        setTotal(data.info.pages);
+      })
+      .catch((err) => {
+        console.error(err);
+        setIsLoading(false);
+      });
+  };
 
-    const showLoader = <div>{loading}</div>;
-
-    if (showError) {
-      throw new Error("Test for error Boundary");
+  useEffect(() => {
+    setTerm(localStorage.getItem("searchTerm")!);
+    if (term === "" || term === undefined) {
+      setIsLoading(true);
+      fetchData(`${BASE_URL}/?page=${currentPage}`)
+    } else if (term && term.length !== 0) {
+      setIsLoading(true);
+      fetch(`${BASE_URL}/?name=${term}`)
+        .then((response) => response.json())
+        .then((data: CharactersFetchedData) => {
+          setIsLoading(false);
+          setFetchedData(data);
+        })
+        .catch((err) => {
+          console.error(err);
+          setIsLoading(false);
+        });
     }
+  }, [currentPage, setTerm, term]);
 
-    return (
-      <main className="main">
-        <section className="search">
-          <div className="search-panel">
-            <form className="search-form">
-              <input
-                type="text"
-                className="search-input"
-                name="search"
-                aria-roledescription="search input"
-                defaultValue={searchTerm}
-                ref={inputRef}
-              />
-              <button
-                id="searchBtn"
-                type="button"
-                className="btn"
-                onClick={(e) => {
-                  e.preventDefault();
-                  this.setState({ searchTerm: inputRef.current!.value });
-                  localStorage.setItem("searchTerm", inputRef.current!.value);
-                  this.fetchData();
-                }}
-              ></button>
-            </form>
+  const setCurrentPageNum = (num: number) => {
+    setCurrentPage(num);
+  };
+
+  return (
+    <main className="main">
+    <button className="error-btn" onClick={showError}>
+      Error
+    </button>
+      {isLoading ? showLoader : (
+        <>
+          <h2 className="collection-message">Find your favorite character!</h2>
+          <div className="pagination">
+            {paginations(total, setCurrentPageNum )}
           </div>
-          <button className="error-btn" onClick={this.showError}>
-            Error
-          </button>
-        </section>
-        <h2 className="message">{message}</h2>
-        {showLoader && (
-          <section className="card-collection">
-            <div className="collection">
-              {characters!.map((item: Character) => (
-                <Card
-                  key={item.id}
-                  imgUrl={item.image}
-                  name={item.name}
-                  species={item.species}
-                />
-              ))}
-            </div>
-          </section>
-        )}
-      </main>
-    );
-  }
-}
+          <div className="collection-content">
+            <Collection fetchedData={fetchedData} />
+            {showDetails ? (<CardDetails fetchedData={fetchedData.results} />) : null}
+          </div>
+        </>
+      )}
+    </main>
+  );
+};
+
+export default CardCollection;

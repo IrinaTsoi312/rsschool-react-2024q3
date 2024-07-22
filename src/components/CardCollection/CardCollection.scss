@@ -1,3 +1,8 @@
+.main {
+  width: 100%;
+  max-width: 1900px;
+}
+
 .card-collection {
   padding: 2rem 0;
 }
@@ -70,6 +75,9 @@
 }
 
 .error-btn {
+  position: absolute;
+  top: 1em;
+  right: 1em;
   padding: 0.5em 1em;
   background-color: #aa0000;
   color: #fff;
@@ -81,4 +89,19 @@
   &:active {
     transform: scale(0.9);
   }
+}
+
+.collection-message {
+  color: #00dc1d;
+}
+
+.collection-content {
+  display: flex;
+}
+
+.pagination {
+  padding: 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }

@@ -13,6 +13,7 @@ $shadow-box: 10px 10px 10px 0px rgba(23, 22, 22, 0.75);
   border: 0.5px solid #4c4c4c;
   background-color: #1a1a1a;
   box-shadow: $shadow-box;
+  text-decoration: none;
   cursor: pointer;
 
   &:hover {

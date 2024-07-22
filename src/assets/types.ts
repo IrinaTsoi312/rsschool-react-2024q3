@@ -1,10 +1,28 @@
 import { ReactNode, RefObject } from "react";
 
+export interface SearchContextInitialValue {
+  term: string;
+  setTerm: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export interface DataContextInitialValue {
+  data: CharactersFetchedData | undefined,
+  setData: React.Dispatch<
+    React.SetStateAction<CharactersFetchedData | undefined>
+  >,
+  showDetails: boolean,
+  setShowDetails: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export interface ContextProps {
+  children: ReactNode;
+}
+
 export type CharactersFetchedData = {
   info: {
     count: number;
     pages: number;
-    next: string;
+    next: string | null;
     prev: null | string;
   };
   results: Character[];
@@ -41,9 +59,10 @@ export type CardCollectionState = {
 };
 
 export type CardProps = {
-  name: string;
-  imgUrl: string;
-  species: string;
+  name: string,
+  imgUrl: string,
+  species: string,
+  id: number
 };
 
 export type SearchPanelState = {
@@ -62,3 +81,17 @@ export type ErrorBoundaryProps = {
 export type HeaderProps = {
   hasError: boolean;
 };
+
+export type PaginationProps = {
+  num: number,
+  link: string,
+  setCurrentPageNum: (num: number) => void
+}
+
+export type CollectionProps = {
+  fetchedData: CharactersFetchedData,
+}
+
+export type CardDetailsProps = {
+  fetchedData: Character[]
+}
