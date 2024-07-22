@@ -96,7 +96,7 @@ const CardCollection = () => {
             {paginations(total, setCurrentPageNum )}
           </div>
           <div className="collection-content">
-            <Collection fetchedData={fetchedData} />
+            <Collection fetchedData={data} />
             {showDetails ? (<CardDetails fetchedData={fetchedData.results} />) : null}
           </div>
         </>
