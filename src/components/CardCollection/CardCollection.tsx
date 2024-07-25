@@ -8,6 +8,7 @@ import CardDetails from "../CardDetails/CardDetails";
 import { useDataContext } from "../../features/providers/DataContextProvider/DataContext";
 import { paginations } from "../Pagination/Pagination.helpers";
 import { characterAPI } from "../../features/redux/api/ApiSlice";
+import { current } from "@reduxjs/toolkit";
 
 const initialFetchedValue = {
   info: {
@@ -29,7 +30,7 @@ const CardCollection = () => {
   const [total, setTotal] = useState(0);
   const {currentPage, setCurrentPage} = useDataContext();
 
-  const {data} = characterAPI.useFetchCharactersQuery(currentPage);
+  const {data} = characterAPI.useFetchCharactersQuery(`/?page=${currentPage}`);
 
   const showLoader = <div>Loading...</div>;
 
@@ -45,26 +46,9 @@ const CardCollection = () => {
     setIsError(true);
   };
 
-  const fetchData = (url: string) => {
-    fetch(url)
-      .then((response) => response.json())
-      .then((data: CharactersFetchedData) => {
-        setIsLoading(false);
-        setFetchedData(data);
-        setTotal(data.info.pages);
-      })
-      .catch((err) => {
-        console.error(err);
-        setIsLoading(false);
-      });
-  };
-
   useEffect(() => {
     setTerm(localStorage.getItem("searchTerm")!);
-    if (term === "" || term === undefined) {
-      setIsLoading(true);
-      fetchData(`${BASE_URL}/?page=${currentPage}`)
-    } else if (term && term.length !== 0) {
+    if (term && term.length !== 0) {
       setIsLoading(true);
       fetch(`${BASE_URL}/?name=${term}`)
         .then((response) => response.json())

@@ -1,18 +1,17 @@
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./Flyout.scss";
 import { RootStateType } from "../../features/redux/redux.types";
 import { unselectAll } from "../../features/redux/SelectedSlice";
-import { characterAPI } from "../../features/redux/api/ApiSlice";
-import { useDataContext } from "../../features/providers/DataContextProvider/DataContext";
 import { Character } from "../../assets/types";
+import { characterInitialValue } from "./Flayout.constatnts";
+import { BASE_URL } from "../CardCollection/CardCollection.constants";
 
 export default function Flyout() {
-  const {currentPage} = useDataContext();
+
+  const [character, setCharacter] = useState<Character>(characterInitialValue);
   
-  const selectedCardsData = useSelector((state: RootStateType) => {
-    return state.selectedCardsSliceReducer.selectedCardsData;
-  });
-  const {data} = characterAPI.useFetchCharactersQuery(currentPage);
+  const selectedCardsData = useSelector((state: RootStateType) => state.selectedCardsSliceReducer.selectedCardsData);
 
   const dispatch = useDispatch();
 
@@ -20,32 +19,46 @@ export default function Flyout() {
     dispatch(unselectAll());
   };
 
+  const fetchData = (url: string) => {
+    fetch(url)
+      .then((response) => response.json())
+      .then((data: Character) => {
+        setCharacter(data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
   const getAllSelectedData = () => {
     const results: Character[] = [];
     selectedCardsData.map((id) => {
-      results.push(data.results[(id.toString())])
+      fetchData(`${BASE_URL}/${id}`);
+      console.log(character)
+      results.push(character);
     });
     return results;
-  }
+  };
 
-  const convertToCSV = (items: Character[]) => {
+  const convertToCSV = (chars: Character[]) => {
     const csvContent = [
-      Object.keys(items[0]).join(','),
-      ...items.map(item => Object.values(item).join(','))
-    ].join('\n');
+      Object.keys(chars[0]).join(","),
+      ...chars.map((char) => Object.values(char).join(",")),
+    ].join("\n");
     return csvContent;
   };
 
   const download = () => {
+
     const data = getAllSelectedData();
     const csvContent = convertToCSV(data);
 
-    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
     const url = URL.createObjectURL(blob);
 
-    const link = document.createElement('a');
-    link.setAttribute('href', url);
-    link.setAttribute('download', `${data.length}_characters.csv`);
+    const link = document.createElement("a");
+    link.setAttribute("href", url);
+    link.setAttribute("download", `${data.length}_characters.csv`);
 
     document.body.appendChild(link);
     link.click();
@@ -58,15 +71,13 @@ export default function Flyout() {
         Selected: {selectedCardsData.length} cards
       </p>
       <div className="buttons">
-        <button
-          className="btn-selected-control"
-          onClick={removeAll}
-        >Unselect all</button>
-        <button
-          className="btn-selected-control"
-          onClick={download}
-        >Download</button>
+        <button className="btn-selected-control" onClick={removeAll}>
+          Unselect all
+        </button>
+        <button className="btn-selected-control" onClick={download}>
+          Download
+        </button>
       </div>
     </div>
-  )
+  );
 }

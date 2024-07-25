@@ -6,7 +6,7 @@ export const characterAPI = createApi({
   baseQuery: fetchBaseQuery({baseUrl: BASE_URL}),
   endpoints: (build) => ({
     fetchCharacters: build.query({
-      query: (page = 1) => (`/?page=${page}`)
+      query: (query) => (query)
     })
   })
 });

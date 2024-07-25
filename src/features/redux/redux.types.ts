@@ -1,6 +1,6 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import { characterAPI } from "./api/ApiSlice";
 import selectedCardsSliceReducer from "./SelectedSlice";
+import { characterAPI } from "./api/ApiSlice";
 
 export interface SelectedCardsState {
   selectedCardsData: string[];
