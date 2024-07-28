@@ -20,7 +20,7 @@ const Card = (props: CardProps) => {
   const switchSelectCard = (e: React.ChangeEvent<HTMLInputElement>) => {
     const target = e.target as HTMLInputElement;
     if (target.checked) {
-      dispatch(selectCard(target.id));
+      dispatch(selectCard({id: target.id, name: name, species: species}));
     } else if (!target.checked) {
       dispatch(unSelectCard(target.id));
     }

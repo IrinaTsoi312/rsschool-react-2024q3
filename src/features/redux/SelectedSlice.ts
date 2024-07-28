@@ -1,9 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { RootStateType } from "./redux.types";
+import { RootStateType, SelectedCardData } from "./redux.types";
 
 const initialState: RootStateType["selectedCardsSliceReducer"] = {
   selectedCardsData: [],
-  currentCard: "1"
+  currentCard: {
+    id: "", name: "", species: ""
+  }
 };
 
 export const selectedCardsSlice = createSlice({
@@ -14,11 +16,11 @@ export const selectedCardsSlice = createSlice({
       state.currentCard = action.payload;
     },
     selectCard: (state, action) => {
-      state.selectedCardsData = [...state.selectedCardsData, action.payload];
+      state.selectedCardsData = Array.from(new Set([...state.selectedCardsData, action.payload]));
     },
     unSelectCard: (state, action) => {
-      state.selectedCardsData = state.selectedCardsData.filter((cardId: string) => {
-        return cardId !== action.payload;
+      state.selectedCardsData = state.selectedCardsData.filter((card: SelectedCardData) => {
+        return card.id !== action.payload;
       });
     },
     unselectAll: (state) => {

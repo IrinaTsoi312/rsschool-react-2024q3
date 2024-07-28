@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import "./Flyout.scss";
 import { RootStateType } from "../../features/redux/redux.types";
 import { unselectAll } from "../../features/redux/SelectedSlice";
-import { Character } from "../../assets/types";
+import { Character, CSVCharacterData } from "../../assets/types";
 import { characterInitialValue } from "./Flayout.constatnts";
 import { BASE_URL } from "../CardCollection/CardCollection.constants";
 
 export default function Flyout() {
 
-  const [character, setCharacter] = useState<Character>(characterInitialValue);
+  // const [character, setCharacter] = useState<CSVCharacterData>(characterInitialValue);
   
   const selectedCardsData = useSelector((state: RootStateType) => state.selectedCardsSliceReducer.selectedCardsData);
 
@@ -19,28 +19,7 @@ export default function Flyout() {
     dispatch(unselectAll());
   };
 
-  const fetchData = (url: string) => {
-    fetch(url)
-      .then((response) => response.json())
-      .then((data: Character) => {
-        setCharacter(data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  };
-
-  const getAllSelectedData = () => {
-    const results: Character[] = [];
-    selectedCardsData.map((id) => {
-      fetchData(`${BASE_URL}/${id}`);
-      console.log(character)
-      results.push(character);
-    });
-    return results;
-  };
-
-  const convertToCSV = (chars: Character[]) => {
+  const convertToCSV = (chars: CSVCharacterData[]) => {
     const csvContent = [
       Object.keys(chars[0]).join(","),
       ...chars.map((char) => Object.values(char).join(",")),
@@ -50,7 +29,7 @@ export default function Flyout() {
 
   const download = () => {
 
-    const data = getAllSelectedData();
+    const data = selectedCardsData;
     const csvContent = convertToCSV(data);
 
     const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });

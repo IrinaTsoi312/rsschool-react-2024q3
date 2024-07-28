@@ -13,7 +13,7 @@ export default function Collection(props: CollectionProps) {
   });
 
   const isChecked = (itemId: string) => {
-    return Boolean(selectedCardsData.filter((id) => itemId === id).length);
+    return Boolean(selectedCardsData.filter((item) => itemId === item.id).length);
   };
 
   return (

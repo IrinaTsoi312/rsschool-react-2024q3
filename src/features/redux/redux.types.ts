@@ -17,9 +17,15 @@ export const rootReducer = combineReducers({
   [characterAPI.reducerPath]: characterAPI.reducer,
 });
 
+export type SelectedCardData = {
+  id: string, name: string, species: string
+};
+
 export type RootStateType = {
   selectedCardsSliceReducer: {
-      selectedCardsData: string[],
-      currentCard: string
+      selectedCardsData: SelectedCardData[],
+      currentCard: {
+        id: string, name: string, species: string
+      }
   };
 };
