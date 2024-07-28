@@ -1,16 +1,10 @@
-import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./Flyout.scss";
 import { RootStateType } from "../../features/redux/redux.types";
 import { unselectAll } from "../../features/redux/SelectedSlice";
-import { Character, CSVCharacterData } from "../../assets/types";
-import { characterInitialValue } from "./Flayout.constatnts";
-import { BASE_URL } from "../CardCollection/CardCollection.constants";
+import { CSVCharacterData } from "../../assets/types";
 
-export default function Flyout() {
-
-  // const [character, setCharacter] = useState<CSVCharacterData>(characterInitialValue);
-  
+export default function Flyout() {  
   const selectedCardsData = useSelector((state: RootStateType) => state.selectedCardsSliceReducer.selectedCardsData);
 
   const dispatch = useDispatch();
