@@ -43,6 +43,14 @@ const Header = () => {
               className="btn"
               onClick={submitSearchTerm}
             ></button>
+            <button
+              id="resetBtn"
+              type="button"
+              className="btn"
+              onClick={() => {
+                window.location.reload();
+              }}
+            ></button>
           </div>
         </div>
       </div>

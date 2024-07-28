@@ -8,7 +8,6 @@ import CardDetails from "../CardDetails/CardDetails";
 import { useDataContext } from "../../features/providers/DataContextProvider/DataContext";
 import { paginations } from "../Pagination/Pagination.helpers";
 import { characterAPI } from "../../features/redux/api/ApiSlice";
-import { current } from "@reduxjs/toolkit";
 
 const initialFetchedValue = {
   info: {
@@ -24,13 +23,13 @@ const CardCollection = () => {
   const { term, setTerm } = useSearchContext();
   const {showDetails} = useDataContext();
 
-  const [fetchedData, setFetchedData] = useState<CharactersFetchedData>(initialFetchedValue);
-  const [isLoading, setIsLoading] = useState(true);
+  // const [fetchedData, setFetchedData] = useState<CharactersFetchedData>(initialFetchedValue);
   const [isError, setIsError] = useState(false);
-  const [total, setTotal] = useState(0);
+  const total = 42;
   const {currentPage, setCurrentPage} = useDataContext();
+  const [query, setQuery] = useState(`/?page=${currentPage}`);
 
-  const {data} = characterAPI.useFetchCharactersQuery(`/?page=${currentPage}`);
+  const {data, isLoading} = characterAPI.useFetchCharactersQuery(query);
 
   const showLoader = <div>Loading...</div>;
 
@@ -40,7 +39,6 @@ const CardCollection = () => {
     }
   }, [isError])
 
-  useEffect(() => {})
 
   const showError = () => {
     setIsError(true);
@@ -49,17 +47,7 @@ const CardCollection = () => {
   useEffect(() => {
     setTerm(localStorage.getItem("searchTerm")!);
     if (term && term.length !== 0) {
-      setIsLoading(true);
-      fetch(`${BASE_URL}/?name=${term}`)
-        .then((response) => response.json())
-        .then((data: CharactersFetchedData) => {
-          setIsLoading(false);
-          setFetchedData(data);
-        })
-        .catch((err) => {
-          console.error(err);
-          setIsLoading(false);
-        });
+      setQuery(`/?name=${term}`);
     }
   }, [currentPage, setTerm, term]);
 
@@ -80,7 +68,7 @@ const CardCollection = () => {
           </div>
           <div className="collection-content">
             <Collection fetchedData={data} />
-            {showDetails ? (<CardDetails fetchedData={fetchedData.results} />) : null}
+            {showDetails ? (<CardDetails fetchedData={data.results} />) : null}
           </div>
         </>
       )}
