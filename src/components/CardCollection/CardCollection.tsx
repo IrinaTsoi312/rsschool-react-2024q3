@@ -34,11 +34,8 @@ const CardCollection = () => {
   const showLoader = <div>Loading...</div>;
 
   useEffect(() => {
-    if (isError) {
-      throw new Error("Test for ErrorBoundary");
-    }
-  }, [isError])
-
+    setQuery(`/?page=${currentPage}`);
+  }, [currentPage]);
 
   const showError = () => {
     setIsError(true);
@@ -49,7 +46,7 @@ const CardCollection = () => {
     if (term && term.length !== 0) {
       setQuery(`/?name=${term}`);
     }
-  }, [currentPage, setTerm, term]);
+  }, [setTerm, term]);
 
   const setCurrentPageNum = (num: number) => {
     setCurrentPage(num);
