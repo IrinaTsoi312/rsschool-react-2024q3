@@ -1,8 +1,20 @@
+import { createContext } from "react";
+import { ContextProps } from "../assets/types";
+
 export const mockProps = {
   id: 1,
   name: "Rick Sanchez",
   imgUrl: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-  species: "Human"
+  species: "Human",
+  checked: false
+}
+
+export const mockPropsChecked = {
+  id: 1,
+  name: "Rick Sanchez",
+  imgUrl: "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
+  species: "Human",
+  checked: true
 }
 
 export const EMPTY_DATA = {
@@ -686,4 +698,16 @@ export const FETCHED_DATA = {
       "created": "2017-11-04T22:34:53.659Z"
     }
   ]
+};
+
+const Context = createContext(undefined);
+
+export const MockContextProvider = ({ children }: ContextProps) => {
+  const mockValue = undefined;
+
+  return (
+    <Context.Provider value={mockValue}>
+      {children}
+    </Context.Provider>
+  );
 };

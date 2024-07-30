@@ -21,8 +21,10 @@ const Card = (props: CardProps) => {
     const target = e.target as HTMLInputElement;
     if (target.checked) {
       dispatch(selectCard({id: target.id, name: name, species: species}));
+      console.log("Card was selected");
     } else if (!target.checked) {
       dispatch(unSelectCard(target.id));
+      console.log("Card was unselected");
     }
   };
 
@@ -35,6 +37,7 @@ const Card = (props: CardProps) => {
         id={id.toString()}
         onChange={switchSelectCard}
         checked={checked}
+        data-testid="checkbox"
       />
       <NavLink
         to={`/card-collection/details/${id}`}
