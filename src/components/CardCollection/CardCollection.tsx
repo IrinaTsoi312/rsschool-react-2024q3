@@ -38,7 +38,7 @@ const CardCollection = () => {
   const setCurrentPageNum = (num: number) => {
     setCurrentPage(num);
   };
-
+  
   return (
     <main className="main">
     <button className="error-btn" onClick={showError}>
@@ -53,6 +53,7 @@ const CardCollection = () => {
           <div className="collection-content">
             <Collection fetchedData={data} />
             {showDetails ? (<CardDetails fetchedData={data.results} />) : null}
+
           </div>
         </>
       )}
