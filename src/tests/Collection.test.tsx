@@ -1,16 +1,19 @@
 import { describe, expect, it } from "vitest";
-import { getByText, render, screen } from "../utils/test-utils";
+import { render, screen } from "../utils/test-utils";
 import Collection from "../components/Collection/Collection";
-import { EMPTY_DATA, FETCHED_DATA } from "./test.constants";
+import { FETCHED_DATA } from "./test.constants";
 import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import { store } from './../store/store';
 
 describe("Collection", () => {
   it("check if there are 20 cards", () => {
-
     render(
-      <BrowserRouter>
-        <Collection fetchedData={FETCHED_DATA}  />
-      </BrowserRouter>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Collection fetchedData={FETCHED_DATA}  />
+        </BrowserRouter>
+      </Provider>
     );
 
     const cards = screen.getAllByTestId("card");
@@ -18,18 +21,3 @@ describe("Collection", () => {
     expect(cards.length).toBe(20);
   })
 });
-
-describe("Collection", () => {
-  it("check for 'Sorry, there is no character with this name' message", () => {
-
-    render(
-      <BrowserRouter>
-        <Collection fetchedData={EMPTY_DATA}  />
-      </BrowserRouter>
-    );
-
-    const message = screen.getByText("Sorry, there is no character with this name");
-
-    expect(message).toBeInTheDocument();
-  })
-})

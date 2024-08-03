@@ -7,6 +7,9 @@ import NotFoundPage from "./pages/NotFoundPage/NotFoundPage.tsx";
 import CardCollection from "./components/CardCollection/CardCollection.tsx";
 import Collection from "./components/Collection/Collection.tsx";
 import CardDetails from "./components/CardDetails/CardDetails.tsx";
+import ThemeContextProvider from "./features/providers/ThemContextProvider/ThemContextProvider.tsx";
+import { Provider } from "react-redux";
+import { store } from './store/store.ts';
 
 export const router = createBrowserRouter([
   {
@@ -32,15 +35,7 @@ export const router = createBrowserRouter([
           },
           {
             path: "details/:id",
-            element: <CardDetails fetchedData={{
-              info: {
-                count: 0,
-                pages: 0,
-                next: null,
-                prev: null
-              },
-              results: []
-            }} />
+            element: <CardDetails fetchedData={[]} />
           }
         ]
       }
@@ -50,6 +45,10 @@ export const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ThemeContextProvider>
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
+    </ThemeContextProvider>
   </React.StrictMode>,
 );
