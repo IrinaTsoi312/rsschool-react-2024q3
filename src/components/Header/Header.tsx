@@ -6,7 +6,6 @@ import "./Header.scss";
 import { useThemeContext } from "@/features/providers/ThemContextProvider/ThemeContext";
 
 const Header = () => {
-  
   const BG_COLOR = { light: "#fdfff0", dark: "#1e353e" };
 
   const {theme} = useThemeContext();
@@ -49,6 +48,14 @@ const Header = () => {
               type="button"
               className="btn"
               onClick={submitSearchTerm}
+            ></button>
+            <button
+              id="resetBtn"
+              type="button"
+              className="btn"
+              onClick={() => {
+                window.location.reload();
+              }}
             ></button>
           </div>
         </div>
