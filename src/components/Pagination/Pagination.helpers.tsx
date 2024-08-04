@@ -1,3 +1,5 @@
+"use client";
+
 import Pagination from "./Pagination";
 
 export const paginations = (total: number, setCurrentPageNum: (num: number) => void) => {

@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { CharactersFetchedData, ContextProps } from "../../../assets/types";
 import { DataContext } from "./DataContext";

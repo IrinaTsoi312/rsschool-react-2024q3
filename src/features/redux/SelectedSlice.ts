@@ -1,3 +1,5 @@
+"use client";
+
 import { createSlice } from "@reduxjs/toolkit";
 import { RootStateType, SelectedCardData } from "./redux.types";
 

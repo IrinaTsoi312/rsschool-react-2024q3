@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from "react";
 import { ContextProps } from "../../../assets/types";
 import { SearchContext } from "./SearchContext";

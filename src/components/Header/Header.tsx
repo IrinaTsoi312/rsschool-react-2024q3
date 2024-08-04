@@ -1,8 +1,14 @@
+"use client";
+
 import { ChangeEvent, useEffect, useState } from "react";
 import { useSearchContext } from "../../features/providers/SearchContextProvider/SearchContext";
 import "./Header.scss";
+import { useThemeContext } from "@/features/providers/ThemContextProvider/ThemeContext";
 
 const Header = () => {
+  const BG_COLOR = { light: "#fdfff0", dark: "#1e353e" };
+
+  const {theme} = useThemeContext();
   const { term, setTerm } = useSearchContext();
   const [inputValue, setInputValue] = useState("");
   const [localStorageValue, setLocalStorageValue] = useState(localStorage.getItem("searchTerm"));
@@ -22,7 +28,7 @@ const Header = () => {
   };
 
   return (
-    <header className="header">
+    <header className="header" style={{backgroundColor: BG_COLOR[theme as keyof typeof BG_COLOR]}}>
       <h1 className="logo">Rick and Morty</h1>
       <div className="search">
         <div className="search-panel">

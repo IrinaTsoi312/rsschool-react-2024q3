@@ -1,0 +1,443 @@
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[13].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[13].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[13].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[13].use[5]!./src/components/Card/Card.scss ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
+.card-container {
+  position: relative;
+  padding: 5px;
+  width: 260px;
+  height: 360px;
+  border-radius: 10px;
+  border: 1px solid #000000;
+  background-color: #013448;
+  box-shadow: 10px 10px 10px 0px rgba(23, 22, 22, 0.7490196078);
+  cursor: pointer;
+}
+.card-container:hover {
+  border: 2px solid #d4d4d4;
+  transition: all linear 0.2s;
+}
+
+.card {
+  padding: 10px 20px;
+  width: 260px;
+  height: 315px;
+  text-decoration: none;
+}
+
+.cardSelect {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.card-img {
+  width: 100%;
+}
+
+.character-name {
+  padding-bottom: 10px;
+  color: #09ff00;
+  font-size: 1em;
+}
+
+.character-description {
+  text-align: left;
+}
+
+.character-name {
+  text-align: center;
+}
+
+.character-title {
+  color: #00dbfc;
+}
+
+.character-details__value {
+  padding-left: 15px;
+}
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[13].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[13].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[13].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[13].use[5]!./src/components/CardCollection/CardCollection.scss ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.main {
+  width: 100%;
+  max-width: 1900px;
+}
+
+.card-collection {
+  padding: 2rem 0;
+}
+
+.collection {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  width: 100%;
+}
+
+.error-btn {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  padding: 0.5em 1em;
+  background-color: #aa0000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all linear 0.3s;
+}
+.error-btn:active {
+  transform: scale(0.9);
+}
+
+.collection-message {
+  color: #00dc1d;
+}
+
+.collection-content {
+  display: flex;
+}
+
+.pagination {
+  padding: 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[13].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[13].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[13].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[13].use[5]!./src/components/Collection/Collection.scss ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.card-collection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  width: 100%;
+}
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[13].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[13].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[13].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[13].use[5]!./src/components/Flyout/Flyout.scss ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.flayout-container {
+  padding: 0.5rem;
+  color: #fbff00;
+  width: 200px;
+  background-color: #00617c;
+  border-radius: 15px;
+}
+
+.buttons {
+  display: flex;
+  gap: 5px;
+}
+
+.btn-selected-control {
+  padding: 5px 10px;
+  background-color: #02da31;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+}
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[13].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[13].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[13].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[13].use[5]!./src/components/CardDetails/CardDetails.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.details-container {
+  padding: 1rem 0;
+  width: 550px;
+}
+
+.details-card {
+  position: relative;
+  display: flex;
+  padding: 1em;
+  width: 550px;
+  background-color: rgb(32, 48, 61);
+  border-radius: 15px;
+}
+
+.details-text {
+  padding-left: 1em;
+  width: 390px;
+}
+
+.details-table {
+  width: 100%;
+  text-align: left;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}
+
+.details-img {
+  margin: 0 auto;
+  margin-bottom: 1em;
+  display: block;
+  width: 100%;
+  max-width: 180px;
+  border-radius: 15px;
+}
+
+.details-name {
+  padding: 0.5em;
+  color: #ffff00;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.details-row {
+  padding: 1em 0;
+}
+
+.details-title {
+  color: rgb(0, 234, 255);
+  font-family: "Courier New", Courier, monospace;
+}
+
+.details-value {
+  padding-left: 0.5em;
+  font-size: 0.9em;
+}
+
+.btn-close {
+  border: none;
+  background-color: rgba(255, 255, 0, 0);
+  cursor: pointer;
+  transition: all linear 0.2s;
+  width: 30px;
+  height: 30px;
+  background-image: url(/_next/static/media/close-sm-yellow.96a006c5.svg);
+}
+.btn-close:active {
+  transform: scale(1.5);
+}
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[13].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[13].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[13].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[13].use[5]!./src/components/Pagination/Pagination.scss ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.page-link {
+  color: #0eb4d5;
+  text-decoration: none;
+  border: 2px #0eb4d5 solid;
+  border-radius: 5px;
+  width: 25px;
+  height: 25px;
+  transition: all linear 0s;
+}
+.page-link:active {
+  transform: scale(0.9);
+  background-color: #1dd9ff;
+  color: #3e424e;
+}
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[9].use[5]!./src/app/page.module.scss ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.page_main__akH3E {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6rem;
+  min-height: 100vh;
+}
+
+.page_description___d9FL {
+  display: inherit;
+  justify-content: inherit;
+  align-items: inherit;
+  font-size: 0.85rem;
+  max-width: var(--max-width);
+  width: 100%;
+  z-index: 2;
+  font-family: var(--font-mono);
+}
+
+.page_description___d9FL a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.page_description___d9FL p {
+  position: relative;
+  margin: 0;
+  padding: 1rem;
+  background-color: rgba(var(--callout-rgb), 0.5);
+  border: 1px solid rgba(var(--callout-border-rgb), 0.3);
+  border-radius: var(--border-radius);
+}
+
+.page_code__or3F2 {
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+
+.page_grid__umSuY {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(25%, auto));
+  max-width: 100%;
+  width: var(--max-width);
+}
+
+.page_card___3JVW {
+  padding: 1rem 1.2rem;
+  border-radius: var(--border-radius);
+  background: rgba(var(--card-rgb), 0);
+  border: 1px solid rgba(var(--card-border-rgb), 0);
+  transition: background 200ms, border 200ms;
+}
+
+.page_card___3JVW span {
+  display: inline-block;
+  transition: transform 200ms;
+}
+
+.page_card___3JVW h2 {
+  font-weight: 600;
+  margin-bottom: 0.7rem;
+}
+
+.page_card___3JVW p {
+  margin: 0;
+  opacity: 0.6;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  max-width: 30ch;
+  text-wrap: balance;
+}
+
+.page_center__AVsSz {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 4rem 0;
+}
+
+.page_center__AVsSz::before {
+  background: var(--secondary-glow);
+  border-radius: 50%;
+  width: 480px;
+  height: 360px;
+  margin-left: -400px;
+}
+
+.page_center__AVsSz::after {
+  background: var(--primary-glow);
+  width: 240px;
+  height: 180px;
+  z-index: -1;
+}
+
+.page_center__AVsSz::before,
+.page_center__AVsSz::after {
+  content: "";
+  left: 50%;
+  position: absolute;
+  filter: blur(45px);
+  transform: translateZ(0);
+}
+
+.page_logo__1r_52 {
+  position: relative;
+}
+
+/* Enable hover only on non-touch devices */
+@media (hover: hover) and (pointer: fine) {
+  .page_card___3JVW:hover {
+    background: rgba(var(--card-rgb), 0.1);
+    border: 1px solid rgba(var(--card-border-rgb), 0.15);
+  }
+  .page_card___3JVW:hover span {
+    transform: translateX(4px);
+  }
+}
+@media (prefers-reduced-motion) {
+  .page_card___3JVW:hover span {
+    transform: none;
+  }
+}
+/* Mobile */
+@media (max-width: 700px) {
+  .page_content__szHtB {
+    padding: 4rem;
+  }
+  .page_grid__umSuY {
+    grid-template-columns: 1fr;
+    margin-bottom: 120px;
+    max-width: 320px;
+    text-align: center;
+  }
+  .page_card___3JVW {
+    padding: 1rem 2.5rem;
+  }
+  .page_card___3JVW h2 {
+    margin-bottom: 0.5rem;
+  }
+  .page_center__AVsSz {
+    padding: 8rem 0 6rem;
+  }
+  .page_center__AVsSz::before {
+    transform: none;
+    height: 300px;
+  }
+  .page_description___d9FL {
+    font-size: 0.8rem;
+  }
+  .page_description___d9FL a {
+    padding: 1rem;
+  }
+  .page_description___d9FL p,
+  .page_description___d9FL div {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    width: 100%;
+  }
+  .page_description___d9FL p {
+    align-items: center;
+    inset: 0 0 auto;
+    padding: 2rem 1rem 1.4rem;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid rgba(var(--callout-border-rgb), 0.25);
+    background: linear-gradient(to bottom, rgba(var(--background-start-rgb), 1), rgba(var(--callout-rgb), 0.5));
+    background-clip: padding-box;
+    -webkit-backdrop-filter: blur(24px);
+            backdrop-filter: blur(24px);
+  }
+  .page_description___d9FL div {
+    align-items: flex-end;
+    pointer-events: none;
+    inset: auto 0 0;
+    padding: 2rem;
+    height: 200px;
+    background: linear-gradient(to bottom, transparent 0%, rgb(var(--background-end-rgb)) 40%);
+    z-index: 1;
+  }
+}
+/* Tablet and Smaller Desktop */
+@media (min-width: 701px) and (max-width: 1120px) {
+  .page_grid__umSuY {
+    grid-template-columns: repeat(2, 50%);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .page_vercelLogo__O38DX {
+    filter: invert(1);
+  }
+  .page_logo__1r_52 {
+    filter: invert(1) drop-shadow(0 0 0.3rem rgba(255, 255, 255, 0.4392156863));
+  }
+}
+@keyframes page_rotate__dIs7B {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}

@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import "./CardCollection.scss";
 import { useSearchContext } from "../../features/providers/SearchContextProvider/SearchContext";
@@ -11,7 +13,6 @@ const CardCollection = () => {
   const { term, setTerm } = useSearchContext();
   const {showDetails} = useDataContext();
 
-  const [isError, setIsError] = useState(false);
   const total = 42;
   const {currentPage, setCurrentPage} = useDataContext();
   const [query, setQuery] = useState(`/?page=${currentPage}`);
@@ -24,10 +25,6 @@ const CardCollection = () => {
     setQuery(`/?page=${currentPage}`);
   }, [currentPage]);
 
-  const showError = () => {
-    setIsError(true);
-  };
-
   useEffect(() => {
     setTerm(localStorage.getItem("searchTerm")!);
     if (term && term.length !== 0) {
@@ -38,12 +35,9 @@ const CardCollection = () => {
   const setCurrentPageNum = (num: number) => {
     setCurrentPage(num);
   };
-  
+
   return (
-    <main className="main">
-    <button className="error-btn" onClick={showError}>
-      Error
-    </button>
+    <div className="main">
       {isLoading ? showLoader : (
         <>
           <h2 className="collection-message">Find your favorite character!</h2>
@@ -53,11 +47,10 @@ const CardCollection = () => {
           <div className="collection-content">
             <Collection fetchedData={data} />
             {showDetails ? (<CardDetails fetchedData={data.results} />) : null}
-
           </div>
         </>
       )}
-    </main>
+    </div>
   );
 };
 

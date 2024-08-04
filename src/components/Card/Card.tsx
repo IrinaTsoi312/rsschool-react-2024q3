@@ -1,9 +1,11 @@
+"use client";
+
 import "./Card.scss";
 import { CardProps } from "../../assets/types";
-import { NavLink } from "react-router-dom";
 import { useDataContext } from "../../features/providers/DataContextProvider/DataContext";
 import { useDispatch } from "react-redux";
 import { selectCard, unSelectCard } from "../../features/redux/SelectedSlice";
+import Link from "next/link";
 
 const Card = (props: CardProps) => {
   const { id, name, imgUrl, species, checked } = props;
@@ -39,8 +41,8 @@ const Card = (props: CardProps) => {
         checked={checked}
         data-testid="checkbox"
       />
-      <NavLink
-        to={`/card-collection/details/${id}`}
+      <Link
+        href={`/card-collection/details/${id}`}
         className="card"
         onClick={openCard}
         data-testid="card"
@@ -63,7 +65,7 @@ const Card = (props: CardProps) => {
             </tbody>
           </table>
         </div>
-      </NavLink>
+      </Link>
     </div>
   );
 };

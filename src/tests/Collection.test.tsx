@@ -8,6 +8,7 @@ import { store } from './../store/store';
 
 describe("Collection", () => {
   it("check if there are 20 cards", () => {
+
     render(
       <Provider store={store}>
         <BrowserRouter>

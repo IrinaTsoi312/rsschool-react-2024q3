@@ -29,8 +29,8 @@ export default function Collection(props: CollectionProps) {
             checked={isChecked(item.id.toString())}
           />
         )))}
-        {selectedCardsData.length !== 0 ? <Flyout /> : null}
       </div>
+      {selectedCardsData.length !== 0 ? <Flyout /> : null}
     </section>
   )
 }

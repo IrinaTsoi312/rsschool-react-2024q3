@@ -1,6 +1,6 @@
-import { NavLink } from "react-router-dom";
 import "./Pagination.scss";
 import { PaginationProps } from "../../assets/types";
+import Link from "next/link";
 
 export default function Pagination (props: PaginationProps) {
   const {num, link, setCurrentPageNum} = props;
@@ -9,10 +9,10 @@ export default function Pagination (props: PaginationProps) {
     setCurrentPageNum(num);
   }
   return (
-    <NavLink 
-      to={link} 
+    <Link 
+      href={link} 
       className="page-link"
       onClick={handleClick}
-    >{num}</NavLink>
+    >{num}</Link>
   );
 }

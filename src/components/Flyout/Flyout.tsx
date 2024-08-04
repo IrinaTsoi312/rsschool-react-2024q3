@@ -1,3 +1,5 @@
+"use client";
+
 import { useDispatch, useSelector } from "react-redux";
 import "./Flyout.scss";
 import { RootStateType } from "../../features/redux/redux.types";
