@@ -1,0 +1,15 @@
+.page-link {
+  color: #0eb4d5;
+  text-decoration: none;
+  border: 2px #0eb4d5 solid;
+  border-radius: 5px;
+  width: 25px;
+  height: 25px;
+  transition: all linear 0s;
+
+  &:active {
+    transform: scale(0.9);
+    background-color: #1dd9ff;
+    color: #3e424e;
+  }
+}

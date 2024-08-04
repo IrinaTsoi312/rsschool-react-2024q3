@@ -1,0 +1,50 @@
+.main {
+  width: 100%;
+  max-width: 1900px;
+}
+
+.card-collection {
+  padding: 2rem 0;
+}
+
+.collection {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  width: 100%;
+}
+
+.error-btn {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  padding: 0.5em 1em;
+  background-color: #aa0000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all linear 0.3s;
+
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
+.collection-message {
+  color: #00dc1d;
+}
+
+.collection-content {
+  display: flex;
+}
+
+.pagination {
+  padding: 1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}

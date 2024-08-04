@@ -1,0 +1,70 @@
+.details-container {
+  padding: 1rem 0;
+  width: 550px;
+}
+
+.details-card {
+  position: relative;
+  display: flex;
+  padding: 1em;
+  width: 550px;
+  background-color: rgb(32, 48, 61);
+  border-radius: 15px;
+}
+
+.details-text {
+  padding-left: 1em;
+  width: 390px;
+}
+
+.details-table {
+  width: 100%;
+  text-align: left;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}
+
+.details-img {
+  margin: 0 auto;
+  margin-bottom: 1em;
+  display: block;
+  width: 100%;
+  max-width: 180px;
+  border-radius: 15px;
+}
+
+.details-name {
+  padding: 0.5em;
+  color: #ffff00;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.details-row {
+  padding: 1em 0;
+}
+
+.details-title {
+  color: rgb(0, 234, 255);
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.details-value {
+  padding-left: 0.5em;
+  font-size: 0.9em;
+}
+
+.btn-close {
+  border: none;
+  background-color: #ffff0000;
+  cursor: pointer;
+  transition: all linear 0.2s;
+  width: 30px;
+  height: 30px;
+  background-image: url("../../../public/close-sm-yellow.svg");
+
+  &:active {
+    transform: scale(1.5);
+  }
+}

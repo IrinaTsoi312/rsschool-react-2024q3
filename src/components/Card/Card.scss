@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
+
+$font-main: "Great Vibes", cursive;
+$clr-title: #09ff00;
+$clr-subtitle: #00dbfc;
+$shadow-box: 10px 10px 10px 0px #171616bf;
+
+.card-container {
+  position: relative;
+  padding: 5px;
+  width: 260px;
+  height: 360px;
+  border-radius: 10px;
+  border: 1px solid #000000;
+  background-color: #013448;
+  box-shadow: $shadow-box;
+  cursor: pointer;
+
+  &:hover {
+    border: 2px solid #d4d4d4;
+    transition: all linear 0.2s;
+  }
+}
+
+.card {
+  padding: 10px 20px;
+  width: 260px;
+  height: 315px;
+  text-decoration: none;
+}
+
+.cardSelect {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.card-img {
+  width: 100%;
+}
+
+.character-name {
+  padding-bottom: 10px;
+  color: $clr-title;
+  font-size: 1em;
+}
+
+.character-description {
+  text-align: left;
+}
+
+.character-name {
+  text-align: center;
+}
+
+.character-title {
+  color: $clr-subtitle;
+}
+
+.character-details__value {
+  padding-left: 15px;
+}

@@ -1,0 +1,32 @@
+.modal-container {
+  width: 100%;
+  height: 100vh;
+}
+
+.modal-heading {
+  padding: 1em;
+  color: red;
+}
+
+.refresh {
+  padding: 0.5em;
+  text-decoration: none;
+  color: #fff;
+  background-color: #0089de;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    animation: shake 0.3s infinite;
+    transition: all linear 0.2s;
+
+    @keyframes shake {
+      0% { transform: rotate(0deg); }
+      25% { transform: rotate(5deg); }
+      50% { transform: rotate(0deg); }
+      75% { transform: rotate(-5deg); }
+      100% { transform: rotate(0deg); }
+    }
+  }
+}
