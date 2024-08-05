@@ -1,4 +1,4 @@
-// File: C:\Users\irina_tsoi\WORK\Study\RSSCHOOL\React-2024Q3\rsschool-react2024q3\nextjs-ssr-pages-api\nextjs-ssr-pages-api\src\app\page.tsx
+// File: C:\Users\irina_tsoi\WORK\Study\RSSCHOOL\React-2024Q3\rsschool-react2024q3\nextjs-ssr-pages-api\nextjs-ssr-app-router-api\rsschool-react-2024q3\src\app\page.tsx
 import * as entry from '../../../src/app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

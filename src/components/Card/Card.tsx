@@ -5,17 +5,19 @@ import { CardProps } from "../../assets/types";
 import { useDataContext } from "../../features/providers/DataContextProvider/DataContext";
 import { useDispatch } from "react-redux";
 import { selectCard, unSelectCard } from "../../features/redux/SelectedSlice";
-import Link from "next/link";
 
 const Card = (props: CardProps) => {
   const { id, name, imgUrl, species, checked } = props;
-  const {setShowDetails} = useDataContext();
+  const {setShowDetails, setCardId} = useDataContext();
   const dispatch = useDispatch();
 
-  const openCard = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>): void => {
+  const openCard = (e: React.MouseEvent<HTMLDivElement, MouseEvent>): void => {
+    e.preventDefault();
+    const target = e.target as HTMLDivElement;
     if ((e.target as HTMLElement).tagName.toLocaleLowerCase() === "input") {
       return;
     }
+    setCardId(target.id);
     setShowDetails(true);
   };
 
@@ -31,7 +33,11 @@ const Card = (props: CardProps) => {
   };
 
   return (
-    <div className="card-container">
+    <div
+      id={id.toString()}
+      className="card-container"
+      onClick={openCard}
+    >
       <input 
         type="checkbox" 
         name={(id.toString())}
@@ -41,10 +47,8 @@ const Card = (props: CardProps) => {
         checked={checked}
         data-testid="checkbox"
       />
-      <Link
-        href={`/card-collection/details/${id}`}
+      <div
         className="card"
-        onClick={openCard}
         data-testid="card"
       >
         <div className="character-img" data-testid="imgContainer">
@@ -65,7 +69,7 @@ const Card = (props: CardProps) => {
             </tbody>
           </table>
         </div>
-      </Link>
+      </div>
     </div>
   );
 };

@@ -13,7 +13,9 @@ export interface DataContextInitialValue {
   showDetails: boolean,
   setShowDetails: React.Dispatch<React.SetStateAction<boolean>>,
   currentPage: number,
-  setCurrentPage: React.Dispatch<React.SetStateAction<number>>
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>,
+  cardId: string,
+  setCardId: React.Dispatch<React.SetStateAction<string>>
 }
 
 export interface ContextProps {

@@ -15,7 +15,9 @@ const InitialValue = {
   showDetails: false,
   setShowDetails: () => {},
   currentPage: 1,
-  setCurrentPage: () => {}
+  setCurrentPage: () => {},
+  cardId: "",
+  setCardId: () => {}
 };
 
 export const DataContext = createContext<DataContextInitialValue>(InitialValue);

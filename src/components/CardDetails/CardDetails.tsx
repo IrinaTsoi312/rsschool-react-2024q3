@@ -7,22 +7,19 @@ import { useRouter } from "next/router";
 
 export default function CardDetails(props: CardDetailsProps) {
   const { fetchedData } = props;
-  const { setShowDetails } = useDataContext();
-  
-  const router = useRouter();
-  const {id} = router.query;
+  const { setShowDetails, cardId } = useDataContext();
   
   const closeCard = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void => {
     e.preventDefault();
     setShowDetails(false);
   };
 
-  const paramId = Number(id);
+  const paramId = Number(cardId);
   return (
     <section data-testid="card-details-section">
       {fetchedData.map((item) => {
         if (paramId) {
-          if (item.id === Number(id)!) {
+          if (item.id === Number(cardId)!) {
             return (
               <div key={paramId} className="details-container">
               <h5 data-testid="d-title">Character Details:</h5>
